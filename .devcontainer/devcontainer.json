@@ -1,0 +1,5 @@
+{
+  "image": "node", // Or "dockerFile"
+  "workspaceFolder": "/workspace",
+  "workspaceMount": "source=/home/madmxg/src/github/react-test-task,target=/workspace,type=bind,consistency=cached"
+}
