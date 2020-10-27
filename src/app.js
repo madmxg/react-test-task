@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './app.module.scss';
 import Product from './product/product';
+import Cart from './cart/cart';
 
 class App extends React.Component {
   state = {
@@ -11,6 +12,14 @@ class App extends React.Component {
     ],
     cart: [],
   };
+
+  componentDidMount() {
+    console.log('componentDidMount');
+  }
+
+  // componentDidMount() {
+  //   console.log('componentDidMount');
+  // }
 
   changePageTitleHandler = () => {
     this.setState({ pageTitle: 'Products list' });
@@ -32,6 +41,7 @@ class App extends React.Component {
   };
 
   render() {
+    console.log('render');
     const { products, cart, pageTitle } = this.state;
 
     return (
@@ -50,25 +60,10 @@ class App extends React.Component {
             inCart={cart.find(({ id }) => id === item.id)}
           />
         ))}
-
-        <div
-          style={{
-            display: 'block',
-            width: '100%',
-            padding: '10px',
-            margin: '0px auto',
-          }}
-        >
-          <div>Cart:</div>
-          {this.state.cart.map((item) => (
-            <div key={item.id}>
-              <span>{item.name}</span>
-              <button onClick={() => this.removeFromCartHandler(item.id)}>
-                remove
-              </button>
-            </div>
-          ))}
-        </div>
+        <Cart
+          data={this.state.cart}
+          removeFromCart={this.removeFromCartHandler}
+        />
       </div>
     );
   }
