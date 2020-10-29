@@ -2,12 +2,6 @@ import React from 'react';
 import './product.scss';
 
 class Product extends React.Component {
-  componentDidUpdate(prevProps) {
-    if (prevProps.inCart !== this.props.inCart) {
-      console.log('componentDidUpdate');
-    }
-  }
-
   shouldComponentUpdate(nextProps) {
     return nextProps.inCart !== this.props.inCart;
   }
